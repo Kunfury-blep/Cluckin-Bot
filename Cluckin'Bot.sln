@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cluckin'Bot", "Cluckin'Bot.csproj", "{887B328E-D7B1-4109-9A90-CF7659E26F47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{887B328E-D7B1-4109-9A90-CF7659E26F47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{887B328E-D7B1-4109-9A90-CF7659E26F47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{887B328E-D7B1-4109-9A90-CF7659E26F47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{887B328E-D7B1-4109-9A90-CF7659E26F47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C2FFC1A3-E111-4B4A-93E3-1AF8984F6E52}
+	EndGlobalSection
+EndGlobal
