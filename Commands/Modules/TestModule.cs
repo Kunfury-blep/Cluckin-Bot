@@ -1,8 +1,10 @@
 ﻿using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,26 +14,8 @@ namespace Cluckin_Bot.Commands.Modules
     // for commands to be available, and have the Context passed to them, we must inherit ModuleBase
     public class ExampleCommands : ModuleBase
     {
-        [Command("hello")]
-        public async Task HelloCommand()
-        {
-            // initialize empty string builder for reply
-            var sb = new StringBuilder();
-
-            // get user info from the Context
-            var user = Context.User;
-
-            // build out the reply
-            sb.AppendLine($"You are -> [{user.Username}]");
-            sb.AppendLine("Hello World!");
-
-            // send simple string reply
-            await ReplyAsync(sb.ToString());
-        }
-
         [Command("8ball")]
         [Alias("ask")]
-        [RequireUserPermission(GuildPermission.KickMembers)]
         public async Task AskEightBall([Remainder] string args = null)
         {
             // I like using StringBuilder to build out the reply
@@ -75,9 +59,9 @@ namespace Cluckin_Bot.Commands.Modules
                 var answer = replies[new Random().Next(replies.Count - 1)];
 
                 // build out our reply with the handy StringBuilder
-                sb.AppendLine($"You asked: [**{args}**]...");
+                sb.AppendLine($"You asked: **{args}**...");
                 sb.AppendLine();
-                sb.AppendLine($"...your answer is [**{answer}**]");
+                sb.AppendLine($"...your answer is **{answer}**");
 
                 // bonus - let's switch out the reply and change the color based on it
                 switch (answer)
@@ -112,18 +96,10 @@ namespace Cluckin_Bot.Commands.Modules
             await ReplyAsync(null, false, embed.Build());
         }
 
-        [Command("Sold")]
-        public async Task SellMeal([Remainder] int amount = 0)
-        {
-            string name = (Context.Message.Author as SocketGuildUser).Nickname;
-            if (name == null) name = Context.User.Username;
-
-            var sb = new StringBuilder();
-
-            sb.AppendLine($"{name} just sold a <temp meal name>!");
-            sb.AppendLine("They have currently sold a total of <Not Yet Implemented>");
-
-            await ReplyAsync(sb.ToString());
-        }
+        
+    
+    
+    
+    
     }
 }

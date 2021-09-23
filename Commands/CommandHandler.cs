@@ -14,7 +14,6 @@ namespace Cluckin_Bot.Commands
     public class CommandHandler
     {
         // setup fields to be set later in the constructor
-        private readonly IConfiguration _config;
         private readonly CommandService _commands;
         private readonly DiscordSocketClient _client;
         private readonly IServiceProvider _services;
@@ -23,7 +22,6 @@ namespace Cluckin_Bot.Commands
         {
             // juice up the fields with these services
             // since we passed the services in, we can use GetRequiredService to pass them into the fields set earlier
-            _config = services.GetRequiredService<IConfiguration>();
             _commands = services.GetRequiredService<CommandService>();
             _client = services.GetRequiredService<DiscordSocketClient>();
             _services = services;
@@ -59,7 +57,7 @@ namespace Cluckin_Bot.Commands
             var argPos = 0;
 
             // get prefix from the configuration file
-            char prefix = Char.Parse(_config["Prefix"]);
+            char prefix = Char.Parse(Program.Config["Prefix"]);
 
             // determine if the message has a valid prefix, and adjust argPos based on prefix
             if (!(message.HasMentionPrefix(_client.CurrentUser, ref argPos) || message.HasCharPrefix(prefix, ref argPos)))

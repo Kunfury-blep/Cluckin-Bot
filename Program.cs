@@ -17,9 +17,9 @@ namespace Cluckin_Bot
     class Program
     {
         // setup our fields we assign later
-        private readonly IConfiguration _config;
+        //private readonly IConfiguration _config;
         private DiscordSocketClient _client;
-
+        public static IConfiguration Config;
         static void Main(string[] args)
         {
             new Program().MainAsync().GetAwaiter().GetResult();
@@ -27,13 +27,12 @@ namespace Cluckin_Bot
 
         public Program()
         {
-            // create the configuration
-            var _builder = new ConfigurationBuilder()
-                .SetBasePath(AppContext.BaseDirectory)
-                .AddJsonFile(path: "config.json");
 
             // build the configuration and assign to _config          
-            _config = _builder.Build();
+            var _builder = new ConfigurationBuilder()
+               .SetBasePath(AppContext.BaseDirectory)
+               .AddJsonFile(path: "config.json");
+            Config = _builder.Build();
         }
          
         public async Task MainAsync()
@@ -52,7 +51,7 @@ namespace Cluckin_Bot
                 services.GetRequiredService<CommandService>().Log += LogAsync;
 
                 // this is where we get the Token value from the configuration file, and start the bot
-                await client.LoginAsync(TokenType.Bot, _config["Token"]);
+                await client.LoginAsync(TokenType.Bot, Config["Token"]);
                 await client.StartAsync();
 
                 // we get the CommandHandler class here and call the InitializeAsync method to start things up for the CommandHandler service
@@ -82,11 +81,13 @@ namespace Cluckin_Bot
             // using csharpi.Services;
             // the config we build is also added, which comes in handy for setting the command prefix!
             return new ServiceCollection()
-                .AddSingleton(_config)
+                .AddSingleton(Config)
                 .AddSingleton<DiscordSocketClient>()
                 .AddSingleton<CommandService>()
                 .AddSingleton<CommandHandler>()
                 .BuildServiceProvider();
         }
+   
+    
     }
 }
