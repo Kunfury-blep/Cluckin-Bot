@@ -6,6 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Old Contests\**" />
+    <Content Remove="Old Contests\**" />
+    <EmbeddedResource Remove="Old Contests\**" />
+    <None Remove="Old Contests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="data.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Discord.Net" Version="2.4.0" />
     <PackageReference Include="Discord.Net.WebSocket" Version="2.4.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.6" />
